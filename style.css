@@ -4,9 +4,9 @@
 }
 @keyframes typing1 {
       0% { width: 0; opacity: 1; }
-      43.75% { width: 89%; opacity: 1; } /* 7s of 16s */
+      43.75% { width: 84%; opacity: 1; } /* 7s of 16s */
       43.76% { opacity: 1; }
-      100% { opacity: 1; width: 89%; }
+      100% { opacity: 1; width: 84%; }
     }
 
     /* Second text animation: Checking */
