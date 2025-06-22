@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MollywoodTickets</title>
+    <!-- GoogleFonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Poetsen+One&display=swap"
+        rel="stylesheet">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="bg-black scroll-smooth">
+    <!-- navbar -->
+    <nav class="bg-black">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button type="button"
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="absolute -inset-0.5"></span>
+                        <span class="sr-only">Open main menu</span>
+                        <!--
+            Icon when menu is closed.
+
+            Menu open: "hidden", Menu closed: "block"
+          -->
+                        <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true" data-slot="icon">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <!--
+            Icon when menu is open.
+
+            Menu open: "block", Menu closed: "hidden"
+          -->
+                        <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true" data-slot="icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex shrink-0 items-center">
+                        <img class="h-15 w-25" src="./images/log1.png" alt="Your Company" />
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block mt-2">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="#home" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                                aria-current="page">Home</a>
+                            <a href="#movies"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Movies</a>
+                            <a href="#upmovies"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Upcoming
+                                Movies</a>
+                            <!-- <a href="#"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Re-releases</a> -->
+                            <a href="#theatres"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Theatres</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <button type="button"
+                        class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                        <span class="absolute -inset-1.5"></span>
+                        <span class="sr-only">View notifications</span>
+                        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true" data-slot="icon">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                        </svg>
+                    </button>
+
+                    <!-- Profile dropdown -->
+                    <div class="relative ml-3 flex gap-2">
+                        <div>
+                            <button type="button"
+                                class="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="absolute -inset-1.5"></span>
+                                <span class="sr-only">Open user menu</span>
+                                <!-- <img class="size-8 rounded-full"
+                                    src="https://imagedelivery.net/5MYSbk45M80qAwecrlKzdQ/c3dc8077-e4d7-42e4-7d49-58e3409cba00/preview"
+                                    alt="" /> -->
+                                <i class="fa-brands fa-google-play" style="color: #48a4ea;"></i>
+                            </button>
+                        </div>
+
+                        <div>
+                            <button type="button"
+                                class="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="absolute -inset-1.5"></span>
+                                <span class="sr-only">Open user menu</span>
+                                <!-- <img class="size-8 rounded-full"
+                                    src="https://imagedelivery.net/5MYSbk45M80qAwecrlKzdQ/c3dc8077-e4d7-42e4-7d49-58e3409cba00/preview"
+                                    alt="" /> -->
+                                <i class="fa-brands fa-apple" style="color: #74C0FC;"></i>
+                            </button>
+                        </div>
+
+                        <!--
+            Dropdown menu, show/hide based on menu state.
+
+            Entering: "transition ease-out duration-100"
+              From: "transform opacity-0 scale-95"
+              To: "transform opacity-100 scale-100"
+            Leaving: "transition ease-in duration-75"
+              From: "transform opacity-100 scale-100"
+              To: "transform opacity-0 scale-95"
+          -->
+                        <!-- <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            Active: "bg-gray-100 outline-hidden", Not Active: ""
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-0">Your Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-1">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-2">Sign out</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#home" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                    aria-current="page">Home</a>
+                <a href="#movies"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Movies</a>
+                <a href="#upmovies"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Upcoming
+                    Movies</a>
+                <!-- <a href="#"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Re-releases</a> -->
+                <a href="#theatres"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Theatres</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Home -->
+    <div id="home" class="mt-30">
+        <!-- <img src="./images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" width="75%" height="25%" alt=""> -->
+        <div class="grid md:grid-cols-[3fr_1fr]">
+            <div class="  w-200">
+                <h1
+                    class="md:text-6xl text-4xl  overflow-hidden whitespace-nowrap border-r-2 border-white w-0 animate-typing">
+                    Lights.Camera.Action
+                </h1><br>
+                <div class="h-8 w-75 md:ml-50 ml-20">
+                    <h2
+                        class="flex justify-center  overflow-hidden whitespace-nowrap border-r-2 border-white w-0 animate-typing1">
+                        Powered by Mollywood Tickets
+                    </h2>
+                </div>
+            </div>
+            <div class=" h-80 w-120">
+                <img src="./images/Screenshot_2025-06-22_182133-removebg-preview.png" alt="" width="95%">
+            </div>
+        </div>
+
+
+    </div>
+    <h1 class="flex justify-center text-4xl" id="movies">MOVIES</h1>
+    <!-- Movies -->
+    <div class="grid md:grid-cols-[1fr_3fr] gap-3">
+        <!-- sidebar -->
+        <div class="p-7">
+            <div class="h-100 w-full p-6 bg-slate-800 rounded-lg">
+                <h3 class="text-xl font-semibold">GENRES</h3>
+                <input type="radio">Action <br>
+                <input type="radio">Drama <br>
+                <input type="radio">Thriller <br>
+                <input type="radio">Romance <br>
+                <input type="radio">Adventure <br>
+                <input type="radio">Mystery <br>
+                <input type="radio">Comedy <br><br><br>
+                <h3 class="text-xl font-semibold">Format</h3>
+                <input type="radio">ALL <br>
+                <input type="radio">IMAX 3D <br>
+                <input type="radio">IMAX 2D <br>
+                <input type="radio">3D <br>
+            </div>
+        </div>
+        <!-- Movie cards -->
+        <div class="w-full">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
+
+                <!-- Card 1 -->
+                <div class="bg-slate-800 hover:bg-slate-600 rounded-lg shadow-md p-4 text-black">
+                    <img src="https://assetscdn1.paytm.com/images/cinema/Vyasanasametham-Bandhumithradhikal-poster-103e1d40-45c7-11f0-b426-a50671acfc24.jpg?format=webp&imwidth=576"
+                        class="rounded-md mb-2" alt="Movie">
+                    <h3 class="text-lg font-semibold">Vyasana Sametham Bandhu Mithradhikal</h3>
+                    <p class="text-sm text-gray-400">U . Malayalam</p>
+                    <button
+                        class="mt-auto w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+                        Book Ticket
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-800 hover:bg-slate-600  rounded-lg shadow-md p-4 text-black">
+                    <img src="https://assetscdn1.paytm.com/images/cinema/Ronth--0383e670-3a3c-11f0-b426-a50671acfc24.jpg?format=webp&imwidth=576"
+                        class="rounded-md mb-2" alt="Movie">
+                    <h3 class="text-lg font-semibold">Ronth</h3>
+                    <p class="text-sm text-gray-400">UA16+ . Malayalam</p>
+                    <button class="mt-7 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+                        Book Ticket
+                    </button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-800 hover:bg-slate-600 rounded-lg shadow-md p-4 text-black">
+                    <img src="https://assetscdn1.paytm.com/images/cinema/POSTER%20United-Kingdom-of-Kerala-(UKOK)--28fca490-361e-11f0-93a3-df85bc784697.jpg?format=webp&imwidth=576"
+                        class="rounded-md mb-2" alt="Movie">
+                    <h3 class="text-lg font-semibold">United Kingdom Of Kerala</h3>
+                    <p class="text-sm text-gray-400">U . Malayalam</p>
+                    <button class="mt-7 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+                        Book Ticket
+                    </button>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-slate-800 hover:bg-slate-600 rounded-lg shadow-md p-4 text-black">
+                    <img src="https://assetscdn1.paytm.com/images/cinema/P%20Thetta%20(1)-6c556140-4b5a-11f0-8983-154c867b019d.jpg?format=webp&imwidth=576"
+                        class="rounded-md mb-2" alt="Movie">
+                    <h3 class="text-lg font-semibold">Thetta</h3>
+                    <p class="text-sm text-gray-400">UA13+ . Malayalam</p>
+                    <button
+                        class="mt-auto w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+                        Book Ticket
+                    </button>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-slate-800 hover:bg-slate-600 rounded-lg shadow-md p-4 text-black">
+                    <img src="https://assetscdn1.paytm.com/images/cinema/Police-Day-0a0a3740-41f5-11f0-aa9f-8fefdb33bbbf.jpg?format=webp&imwidth=576"
+                        class="rounded-md mb-2" alt="Movie">
+                    <h3 class="text-lg font-semibold">Police Day</h3>
+                    <p class="text-sm text-gray-400">UA13+ . Malayalam</p>
+                    <button
+                        class="mt-auto w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+                        Book Ticket
+                    </button>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-slate-800 hover:bg-slate-600 rounded-lg shadow-md p-4 text-black">
+                    <img src="https://assetscdn1.paytm.com/images/cinema/Narivetta-5c010480-326d-11f0-aa9f-8fefdb33bbbf.jpg?format=webp&imwidth=576"
+                        class="rounded-md mb-2" alt="Movie">
+                    <h3 class="text-lg font-semibold">Narivetta</h3>
+                    <p class="text-sm text-gray-400">UA16+ . Malayalam</p>
+                    <button
+                        class="mt-auto w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+                        Book Ticket
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Upcoming Movies -->
+    <div class="mt-8">
+        <h1 class="flex justify-center text-4xl" id="upmovies">Upcoming Movies</h1>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 p-6">
+
+            <!-- Card 1 -->
+            <div
+                class="bg-slate-800 rounded-lg shadow-md p-4 text-black flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                <img src="https://www.91-cdn.com/metareel-images/content/posters-7-1750001753157-s5aKJoOSv3D8snq3Y2N3APeK5vz.jpg?tr=h-350,w-230,q-60&version=5"
+                    class="rounded-md mb-2" alt="Movie">
+                <h3 class="text-lg font-semibold">J.S.K Janaki vs State Of Kerala</h3>
+                <p class="text-sm text-gray-400 mb-3">Thriller Crime</p>
+                <button
+                    class="mt-auto bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-800 transition">Book
+                    Ticket</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+                class="bg-slate-800 rounded-lg shadow-md p-4 text-black flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                <img src="https://www.91-cdn.com/metareel-images/content/posters-7-1750002204450-16ldo70b01IJdX3x6MYWkrJUvfT.jpg?tr=h-350,w-230,q-60&version=5"
+                    class="rounded-md mb-2" alt="Movie">
+                <h3 class="text-lg font-semibold">Koodal</h3>
+                <p class="text-sm text-gray-400 mb-3">Drama</p>
+                <button
+                    class="mt-auto bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-800 transition">Book
+                    Ticket</button>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+                class="bg-slate-800 rounded-lg shadow-md p-4 text-black flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                <img src="https://www.91-cdn.com/metareel-images/content/posters-7-1750002108580-sLSAsxbAepsyM9I2opC3CPrkuUR.jpg?tr=h-350,w-230,q-60&version=5"
+                    class="rounded-md mb-2" alt="Movie">
+                <h3 class="text-lg font-semibold">Dheeran</h3>
+                <p class="text-sm text-gray-400 mb-3">Drama Comedy</p>
+                <button
+                    class="mt-auto bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-800 transition">Book
+                    Ticket</button>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+                class="bg-slate-800 rounded-lg shadow-md p-4 text-black flex flex-col transform transition duration-300 hover:scale-105 hover:shadow-lg">
+                <img src="https://www.91-cdn.com/metareel-images/content/posters-7-1744854511509-tlZYg6xB7snaEW85TBjBq2bThNr.jpg?tr=h-350,w-230,q-60&version=5"
+                    class="rounded-md mb-2" alt="Movie">
+                <h3 class="text-lg font-semibold">Odum Kuthira Chadum Kuthira</h3>
+                <p class="text-sm text-gray-400 mb-3">Romance Drama Comedy.</p>
+                <button
+                    class="mt-auto bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-800 transition">Book
+                    Ticket</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- Theatres -->
+    <h2 id="theatres" class="mt-8 text-2xl font-bold text-center mb-6">🎭 Theatres Supported by Mollywood Tickets</h2>
+
+    <div class="max-w-xl mx-auto mt-10 bg-slate-800 p-6 rounded-lg text-white">
+
+        <div class="space-y-6">
+            <!-- Kochi -->
+            <div>
+                <input type="radio" name="location" id="kochi" class="hidden peer/kochi" checked>
+                <label for="kochi"
+                    class="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded peer-checked/kochi:bg-blue-800 block text-center">
+                    Kochi
+                </label>
+                <div class="hidden peer-checked/kochi:block">
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 PVR Lulu Mall</div>
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 Cinepolis Oberon Mall</div>
+                </div>
+            </div>
+
+            <!-- Thrissur -->
+            <div>
+                <input type="radio" name="location" id="thrissur" class="hidden peer/thrissur">
+                <label for="thrissur"
+                    class="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded peer-checked/thrissur:bg-blue-800 block text-center">
+                    Thrissur
+                </label>
+                <div class="hidden peer-checked/thrissur:block">
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 INOX Sobha City Mall</div>
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 Ravikrishna Theatre</div>
+                </div>
+            </div>
+
+            <!-- Trivandrum -->
+            <div>
+                <input type="radio" name="location" id="trivandrum" class="hidden peer/trivandrum">
+                <label for="trivandrum"
+                    class="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded peer-checked/trivandrum:bg-blue-800 block text-center">
+                    Trivandrum
+                </label>
+                <div class="hidden peer-checked/trivandrum:block">
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 Aries Plex SL Cinemas</div>
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 Sree Padmanabha Theatre</div>
+                </div>
+            </div>
+
+            <!-- Calicut -->
+            <div>
+                <input type="radio" name="location" id="calicut" class="hidden peer/calicut">
+                <label for="calicut"
+                    class="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded peer-checked/calicut:bg-blue-800 block text-center">
+                    Calicut
+                </label>
+                <div class="hidden peer-checked/calicut:block">
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 PVS Film City RP Mall</div>
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 Crown Theatre</div>
+                </div>
+            </div>
+
+            <!-- Kollam -->
+            <div>
+                <input type="radio" name="location" id="kollam" class="hidden peer/kollam">
+                <label for="kollam"
+                    class="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded peer-checked/kollam:bg-blue-800 block text-center">
+                    Kollam
+                </label>
+                <div class="hidden peer-checked/kollam:block">
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 Dhanya Ramya Cinemas</div>
+                    <div class="bg-gray-600 p-4 rounded shadow mt-2">🎭 Archana Aradhana</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class="bg-slate-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+
+            <!-- Brand Info -->
+            <div>
+                <h3 class="text-lg font-bold text-yellow-400 mb-2">🎟️ Mollywood Tickets</h3>
+                <p>Book your favorite Malayalam movies across Kerala's best theatres. Fast. Easy. Reliable.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-semibold text-yellow-300 mb-2">Quick Links</h4>
+                <ul class="space-y-1">
+                    <li><a href="#home" class="hover:underline">Home</a></li>
+                    <li><a href="#movies" class="hover:underline">Movies</a></li>
+                    <li><a href="#upmovies" class="hover:underline">Upcoming Movies</a></li>
+                    <li><a href="#theatres" class="hover:underline">Theatres</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <!-- Download App Section -->
+            <div>
+                <h4 class="font-semibold text-yellow-300 mb-2">Download Our App</h4>
+                <p class="text-sm text-gray-300 mb-3">Book tickets anytime, anywhere!</p>
+                <div class="grid md:grid-cols-2">
+                    <!-- Play Store Button -->
+                    <a href="#" class="inline-block">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                            alt="Get it on Google Play" class="h-10">
+                    </a>
+
+                    <!-- App Store Button -->
+                    <a href="#" class="inline-block">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                            alt="Download on the App Store" class="h-10">
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="text-center text-xs text-gray-400 border-t border-gray-700 py-4">
+            © 2025 Mollywood Tickets. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>

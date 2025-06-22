@@ -1,0 +1,33 @@
+*{
+     font-family: "Caprasimo", serif;
+     color: white;
+}
+@keyframes typing1 {
+      0% { width: 0; opacity: 1; }
+      43.75% { width: 89%; opacity: 1; } /* 7s of 16s */
+      43.76% { opacity: 1; }
+      100% { opacity: 1; width: 89%; }
+    }
+
+    /* Second text animation: Checking */
+    @keyframes typing2 {
+      0%, 43.75% { opacity: 0; width: 0; }
+      43.76% { opacity: 1; width: 0; }
+      56.25% { width: 85%; }  /* 2s typing */
+      93.75% { width: 85%; opacity: 1; }  /* pause with full text */
+      93.76%, 100% { width: 85%; opacity: 1; }
+    }
+
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent }
+      50% { border-color: white }
+    }
+
+
+    .animate-typing {
+      animation: typing1 16s steps(50) infinite, blink 0.75s step-end infinite;
+    }
+    .animate-typing1 {
+      animation: typing2 16s steps(20) infinite, blink 0.75s step-end infinite ;
+    }
